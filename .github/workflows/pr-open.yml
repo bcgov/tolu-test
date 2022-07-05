@@ -210,31 +210,31 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           lcov-file: ./frontend/coverage/lcov.info
 
-  sonarcloud:
-    name: Static Analysis
-    needs:
-      - deploy-dev
-    if: needs.build-backend.outputs.build == 'true' || needs.build-frontend.outputs.build == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        # Disable shallow clone for SonarCloud analysis
-        with:
-          fetch-depth: 0
+  # sonarcloud:
+  #   name: Static Analysis
+  #   needs:
+  #     - deploy-dev
+  #   if: needs.build-backend.outputs.build == 'true' || needs.build-frontend.outputs.build == 'true'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       # Disable shallow clone for SonarCloud analysis
+  #       with:
+  #         fetch-depth: 0
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.exclusions=**/test/**
-            -Dsonar.organization=bcgov-sonarcloud
-            -Dsonar.project.monorepo.enabled=true
-            -Dsonar.projectKey=greenfield-template
-            -Dsonar.sources=backend,frontend
-            -Dsonar.test=**/test
+  #     - name: SonarCloud Scan
+  #       uses: SonarSource/sonarcloud-github-action@master
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       with:
+  #         args: >
+  #           -Dsonar.exclusions=**/test/**
+  #           -Dsonar.organization=bcgov-sonarcloud
+  #           -Dsonar.project.monorepo.enabled=true
+  #           -Dsonar.projectKey=greenfield-template
+  #           -Dsonar.sources=backend,frontend
+  #           -Dsonar.test=**/test
 
   # https://github.com/marketplace/actions/aqua-security-trivy
   trivy-backend:
