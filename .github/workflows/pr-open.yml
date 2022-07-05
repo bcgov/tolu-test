@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  NAME: gfp
+  NAME: tolu-test
 
 jobs:
   build-backend:

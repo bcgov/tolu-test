@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  NAME: gfp
+  NAME: tolu-test
 
 jobs:
   cleanup-openshift:

@@ -4,7 +4,7 @@ metadata:
   name: ${NAME}
   annotations:
     description: "Greenfield Template"
-    tags: "gfp"
+    tags: "tolu-test"
     iconClass: icon-js
 labels:
   app: ${NAME}-${ZONE}
@@ -12,7 +12,7 @@ labels:
 parameters:
   - name: NAME
     description: Module name
-    value: gfp
+    value: tolu-test
   - name: COMPONENT
     description: Component name
     value: backend
