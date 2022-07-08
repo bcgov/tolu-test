@@ -13,7 +13,6 @@ parameters:
   - name: NAME
     description: Product name
     value: tolu-test
-    value: 
   - name: COMPONENT
     description: Component name
     value: database
