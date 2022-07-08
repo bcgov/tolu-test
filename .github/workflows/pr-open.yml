@@ -302,6 +302,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Deploy
         run: |
+          set -xeu
           # Login to OpenShift and select project
           oc login --token=${{ secrets.OC_TOKEN }} --server=${{ secrets.OC_SERVER }}
           oc project ${{ secrets.OC_NAMESPACE }}
